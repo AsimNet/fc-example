@@ -1,0 +1,648 @@
+/* ================================================
+ *               ELEGANT FULLCALENDAR DESIGN
+ * ================================================ */
+
+/* اتجاه RTL/LTR للحاوية */
+.timetable-calendar-container {
+  direction: ltr;
+  font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.timetable-calendar-container.rtl {
+  direction: rtl;
+}
+
+/* تغليف التقويم - Modern Glass Effect */
+.calendar-container {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    0 4px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  height: 100%;
+}
+
+/* تخصيصات FullCalendar للـ RTL */
+.rtl :host ::ng-deep .fc {
+  direction: rtl;
+}
+
+.rtl :host ::ng-deep .fc-toolbar,
+.rtl :host ::ng-deep .fc-toolbar-chunk {
+  direction: rtl;
+}
+
+/* ================================================
+ *                  CALENDAR HEADER
+ * ================================================ */
+
+/* رؤوس الأيام - Modern Gradient */
+:host ::ng-deep .fc-col-header-cell {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  font-weight: 700;
+  font-size: 14px;
+  color: #334155;
+  border: none;
+  border-bottom: 2px solid #e2e8f0;
+  padding: 16px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+:host ::ng-deep .fc-col-header-cell::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  border-radius: 1px;
+}
+
+/* عنوان التقويم */
+:host ::ng-deep .fc .fc-toolbar-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e293b;
+  text-align: center;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* ================================================
+ *                   TIME SLOTS
+ * ================================================ */
+
+/* خطوط شبكة الوقت - Cleaner Lines */
+:host ::ng-deep .fc-timegrid-slot {
+  height: 60px !important;
+  min-height: 60px !important;
+  max-height: 60px !important;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.2s ease;
+}
+
+:host ::ng-deep .fc-timegrid-slot:hover {
+  background-color: #f8fafc;
+}
+
+/* ساعات الجدول - Elegant Typography */
+:host ::ng-deep .fc-timegrid-slot-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  padding: 4px 8px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 6px 0 0 6px;
+  border-right: 3px solid #e2e8f0;
+}
+
+/* خطوط الأعمدة */
+:host ::ng-deep .fc-timegrid-col {
+  border-right: 1px solid #f1f5f9;
+}
+
+/* ================================================
+ *                    EVENTS
+ * ================================================ */
+
+/* أحداث عادية - Modern Card Style */
+:host ::ng-deep .fc-event {
+  border-radius: 10px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  margin: 2px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Shine Effect on Events */
+:host ::ng-deep .fc-event::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+:host ::ng-deep .fc-event:hover::before {
+  left: 100%;
+}
+
+:host ::ng-deep .fc-event:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/* Event Text Styling */
+:host ::ng-deep .fc-event-title {
+  font-weight: 700;
+  margin-bottom: 2px;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+:host ::ng-deep .fc-event-time {
+  font-size: 11px;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* ================================================
+ *                 SPECIAL STATES
+ * ================================================ */
+
+/* مؤشر الوقت الحالي - Elegant Now Indicator */
+:host ::ng-deep .fc-timegrid-now-indicator-line {
+  border-color: #ef4444;
+  border-width: 2px;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+  z-index: 5;
+}
+
+:host ::ng-deep .fc-timegrid-now-indicator-arrow {
+  border-top-color: #ef4444;
+  border-bottom-color: #ef4444;
+  filter: drop-shadow(0 2px 4px rgba(239, 68, 68, 0.3));
+}
+
+/* أحداث بها تعارض - Modern Conflict Style */
+:host ::ng-deep .fc-event.conflict {
+  border: 2px solid #ef4444 !important;
+  box-shadow:
+    0 0 0 4px rgba(239, 68, 68, 0.2),
+    0 8px 24px rgba(239, 68, 68, 0.3);
+  animation: conflict-pulse 2s infinite;
+  z-index: 20;
+}
+
+@keyframes conflict-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 4px rgba(239, 68, 68, 0.2),
+      0 8px 24px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 0 8px rgba(239, 68, 68, 0.3),
+      0 12px 32px rgba(239, 68, 68, 0.4);
+  }
+}
+
+/* ================================================
+ *               PREVIEW EVENTS
+ * ================================================ */
+
+:host ::ng-deep .fc-event.preview-event {
+  border: 2px dashed #6366f1;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1)) !important;
+//box-shadow:
+//  0 0 0 4px rgba(99, 102, 241, 0.2),
+//  0 8px 24px rgba(99, 102, 246, 0.2);
+  z-index: 15 !important;
+  animation: preview-glow 1.5s ease-in-out infinite;
+  height: 100%;
+//backdrop-filter: blur(5px);
+}
+
+@keyframes preview-glow {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+    box-shadow:
+      0 0 0 4px rgba(99, 102, 241, 0.2),
+      0 8px 24px rgba(99, 102, 246, 0.2);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.01);
+    box-shadow:
+      0 0 0 6px rgba(99, 102, 241, 0.3),
+      0 12px 32px rgba(99, 102, 246, 0.3);
+  }
+}
+
+:host ::ng-deep .fc-event.preview-conflict {
+  border-color: #ef4444 !important;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1)) !important;
+  box-shadow:
+    0 0 0 4px rgba(239, 68, 68, 0.3),
+    0 8px 24px rgba(239, 68, 68, 0.3);
+  animation: preview-conflict-pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes preview-conflict-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 4px rgba(239, 68, 68, 0.3),
+      0 8px 24px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 0 0 8px rgba(239, 68, 68, 0.4),
+      0 12px 32px rgba(239, 68, 68, 0.4);
+  }
+}
+
+/* ================================================
+ *                   UTILITIES
+ * ================================================ */
+
+/* Remove today highlighting */
+:host ::ng-deep .fc-day-today {
+  background-color: transparent;
+}
+
+:host ::ng-deep .fc .fc-timegrid-col.fc-day-today {
+  background-color: transparent;
+}
+
+/* Toolbar spacing */
+:host ::ng-deep .fc .fc-toolbar.fc-header-toolbar {
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+/* ================================================
+ *              RESPONSIVE DESIGN
+ * ================================================ */
+
+@media (max-width: 768px) {
+  :host ::ng-deep .fc-toolbar {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  :host ::ng-deep .fc-toolbar-chunk {
+    justify-content: center;
+  }
+
+  :host ::ng-deep .fc-event-title {
+    font-size: 12px;
+  }
+
+  :host ::ng-deep .fc-event-time {
+    font-size: 10px;
+  }
+
+  :host ::ng-deep .fc-col-header-cell {
+    padding: 12px 4px;
+    font-size: 12px;
+  }
+
+  .calendar-container {
+    border-radius: 12px;
+    margin: 0 8px;
+  }
+}
+
+/* ================================================
+ *                    PRINT
+ * ================================================ */
+
+@media print {
+  .calendar-header,
+  .calendar-legend {
+    display: none;
+  }
+
+  .calendar-container {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    background: white;
+  }
+
+  :host ::ng-deep .fc-event {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
+
+/* ================================================
+ *               ACCESSIBILITY
+ * ================================================ */
+
+:host ::ng-deep .fc-event:focus {
+  outline: 3px solid #6366f1;
+  outline-offset: 2px;
+}
+
+:host ::ng-deep .fc-button:focus {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+/* ================================================
+ *            ELEGANT EVENT DETAILS
+ * ================================================ */
+
+/* Better event text legibility */
+:host ::ng-deep .fc-event-main {
+  padding: 2px 0;
+}
+
+:host ::ng-deep .fc-event-main-frame {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+:host ::ng-deep .fc-event-title-container {
+  margin-bottom: 1px;
+}
+
+/* Modern scrollbar for time slots */
+:host ::ng-deep .fc-scroller {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+:host ::ng-deep .fc-scroller::-webkit-scrollbar {
+  width: 6px;
+}
+
+:host ::ng-deep .fc-scroller::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+:host ::ng-deep .fc-scroller::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+  border-radius: 3px;
+}
+
+:host ::ng-deep .fc-scroller::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+}
+
+/* ================================================
+ *             DARK MODE SUPPORT
+ * ================================================ */
+
+@media (prefers-color-scheme: dark) {
+  .calendar-container {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :host ::ng-deep .fc-col-header-cell {
+    background: linear-gradient(135deg, #334155 0%, #475569 100%);
+    color: #e2e8f0;
+    border-bottom-color: #475569;
+  }
+
+  :host ::ng-deep .fc .fc-toolbar-title {
+    color: #f1f5f9;
+  }
+
+  :host ::ng-deep .fc-timegrid-slot-label {
+    color: #94a3b8;
+    background: linear-gradient(135deg, #334155 0%, #475569 100%);
+    border-right-color: #475569;
+  }
+
+  :host ::ng-deep .fc-timegrid-slot {
+    border-bottom-color: #334155;
+  }
+
+  :host ::ng-deep .fc-timegrid-col {
+    border-right-color: #334155;
+  }
+}
+
+/* ================================================
+ *          TAIGA UI DRAWER STYLES
+ * ================================================ */
+
+:host ::ng-deep .settings-drawer {
+  border-radius: 0;
+  width: 24rem; /* 384px = w-96 */
+  direction: rtl;
+}
+
+.drawer-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+:host ::ng-deep .drawer-content {
+  padding: 1.5rem;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  direction: rtl;
+}
+
+/* Custom scrollbar for drawer */
+:host ::ng-deep .drawer-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+:host ::ng-deep .drawer-content::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+:host ::ng-deep .drawer-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+:host ::ng-deep .drawer-content::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ================================================
+ *       SECTION BUTTONS - ONLINE/SELF-PACED
+ * ================================================ */
+
+/* Online/Self-paced course section button styles */
+.section-online-course {
+  position: relative;
+  border-style: dashed !important;
+}
+
+.section-online-course::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 6px,
+    rgba(59, 130, 246, 0.1) 6px,
+    rgba(59, 130, 246, 0.1) 12px
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Selected online course section styles */
+.section-online-selected {
+  position: relative;
+  border-style: dashed !important;
+}
+
+.section-online-selected::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 6px,
+    rgba(59, 130, 246, 0.2) 6px,
+    rgba(59, 130, 246, 0.2) 12px
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Section button transitions */
+button[class*="border-dashed"] {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+button[class*="border-solid"] {
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+  cursor: default; /* No preview for already selected sections */
+}
+
+/* Highlight effect for navigated sections */
+.highlight-section {
+  animation: highlightPulse 2s ease-in-out;
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes highlightPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    transform: scale(1);
+  }
+  25% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    transform: scale(1.05);
+  }
+  50% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    transform: scale(1);
+  }
+  75% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    transform: scale(1);
+  }
+}
+
+/* ================================================
+ *                  EXPORT STYLES
+ * ================================================ */
+
+   .exporting-calendar {
+     .fc-scrollgrid {
+       min-width: 1200px !important;
+       width: 100% !important;
+     }
+
+     .fc-scrollgrid-sync-table {
+       min-width: 100% !important;
+       table-layout: fixed !important;
+     }
+
+     .fc-col-header-cell {
+       min-width: 170px !important;
+     }
+
+     .fc-timegrid-col {
+       min-width: 170px !important;
+     }
+
+     .fc-view-harness {
+       overflow: visible !important;
+     }
+
+     .fc-scroller {
+       overflow: visible !important;
+     }
+   }
+
+:host ::ng-deep {
+
+  .fc-v-event .fc-event-main {
+    min-height: 45px;
+  }
+
+  a.fc-event.fc-event-start.fc-event-end.fc-event-future.fc-timegrid-event.fc-v-event{
+    padding: 3px 6px !important;
+  }
+
+// Filter buttons spacing
+tui-filter {
+  gap: 0.75rem !important;
+}
+
+  tui-filter > * {
+    margin-right: 0.75rem !important;
+  }
+
+  tui-filter > *:last-child {
+    margin-right: 0 !important;
+  }
+
+  tui-filter [tuiTag] {
+    margin-right: 0.75rem !important;
+  }
+
+  tui-filter [tuiTag]:last-child {
+    margin-right: 0 !important;
+  }
+
+// Try different TuiFilter selectors
+.t-filter {
+  gap: 0.75rem !important;
+}
+
+  .t-filter > * {
+    margin-right: 0.75rem !important;
+  }
+
+  .t-filter > *:last-child {
+    margin-right: 0 !important;
+  }
+
+}
